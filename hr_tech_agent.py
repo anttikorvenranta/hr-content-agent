@@ -264,7 +264,7 @@ except Exception as e:
 # ============================================================
 
 def save_to_google_sheets(posts_data, selected_articles):
-“"“Save the generated posts to Google Sheets."""
+#Save the generated posts to Google Sheets.
 print(“📊 Saving posts to Google Sheets…")
 
 ```
@@ -350,7 +350,7 @@ except Exception as e:
 # ============================================================
 
 def send_email_notification(posts_data, sheet_url, selected_articles):
-“"“Send email notification that new posts are ready."""
+#Send email notification that new posts are ready.
 print(“📧 Sending email notification…")
 
 ```
@@ -429,32 +429,32 @@ except Exception as e:
 # ============================================================
 
 def call_claude_api(prompt, max_tokens=1500):
-“"“Call the Anthropic Claude API."""
+#Call the Anthropic Claude API.
 headers = {
-“x-api-key": CONFIG[“anthropic_api_key"],
-“anthropic-version": “2023-06-01",
-“content-type": “application/json"
+"x-api-key": CONFIG["anthropic_api_key"],
+"anthropic-version": “2023-06-01",
+"content-type": "application/json"
 }
 payload = {
-“model": “claude-sonnet-4-20250514",
-“max_tokens": max_tokens,
-“messages": [{“role": “user", “content": prompt}]
+"model": “claude-sonnet-4-20250514",
+"max_tokens": max_tokens,
+"messages": [{"role": "user", "content": prompt}]
 }
 try:
 response = requests.post(
-“https://api.anthropic.com/v1/messages",
+"https://api.anthropic.com/v1/messages",
 headers=headers,
 json=payload,
 timeout=60
 )
 if response.status_code == 200:
-return response.json()[“content"][0][“text"]
+return response.json()["content"][0]["text"]
 else:
 print(f"  Claude API error: {response.status_code} — {response.text[:200]}")
-return “"
+return ""
 except Exception as e:
 print(f"  Claude API exception: {e}")
-return “"
+return ""
 
 # ============================================================
 
@@ -465,9 +465,9 @@ return “"
 def run_agent():
 “"“Run the full HR Tech content agent pipeline."""
 print("\n" + “="*60)
-print(“🤖 HR TECH CONTENT AGENT — Starting Run")
+print("🤖 HR TECH CONTENT AGENT — Starting Run")
 print(f"   {datetime.now().strftime(’%Y-%m-%d %H:%M:%S’)}")
-print("="*60 + “\n")
+print("="*60 + "\n")
 
 ```
 # Step 1: Search
@@ -509,7 +509,7 @@ print("="*60 + "\n")
 # ============================================================
 
 def run_with_schedule():
-“"“Run the agent on a schedule."""
+#Run the agent on a schedule.
 try:
 import schedule
 print(f"⏰ Scheduler started — agent will run every {CONFIG[‘run_every_days’]} days")
