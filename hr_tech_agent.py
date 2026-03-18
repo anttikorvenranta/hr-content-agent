@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-#“””
+#
 #HR Tech Social Media AI Agent
 #Searches trending HR tech articles, generates LinkedIn posts,
 #stores them in Google Sheets, and sends email notifications.
-#“””
+#
 
 import os
 import json
@@ -23,7 +23,7 @@ from email.mime.multipart import MIMEMultipart
 
 CONFIG = {
 # Anthropic API
-“anthropic_api_key”: os.getenv(“ANTHROPIC_API_KEY”, “YOUR_ANTHROPIC_API_KEY”),
+"anthropic_api_key" : os.getenv(“ANTHROPIC_API_KEY”, “YOUR_ANTHROPIC_API_KEY”),
 
 ```
 # Google Sheets (via Google Sheets API)
