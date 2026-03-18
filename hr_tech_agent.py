@@ -55,7 +55,7 @@ CONFIG = {
 
 def search_hr_tech_articles():
 #Search for the most recent and trending HR tech articles.
-print(“🔍 Searching for trending HR tech articles…”)
+print("🔍 Searching for trending HR tech articles...")
 
 ```
 queries = [
@@ -117,8 +117,8 @@ return unique_articles[:15]  # Top 15 for validation
 # ============================================================
 
 def validate_and_select_articles(articles):
-“”“Use Claude to identify the most trending and insightful articles.”””
-print(“🤖 Validating and selecting most trending articles with Claude…”)
+# Use Claude to identify the most trending and insightful articles.
+print("🤖 Validating and selecting most trending articles with Claude…")
 
 ```
 articles_text = "\n\n".join([
@@ -141,17 +141,17 @@ Please:
 
 Return your response as JSON in this exact format:
 {{
-“selected_articles”: [
+“selected_articles": [
 {{
-“index”: <original article number 1-{len(articles)}>,
-“title”: “<article title>”,
-“url”: “<article url>”,
-“why_trending”: “<2-3 sentence explanation of why this is trending and relevant to HR professionals>”
+"index": <original article number 1-{len(articles)}>,
+"title": “<article title>",
+"url": “<article url>",
+"why_trending": "<2-3 sentence explanation of why this is trending and relevant to HR professionals>"
 }}
 ]
 }}
 
-Return ONLY the JSON, no other text.”””
+Return ONLY the JSON, no other text."""
 
 ```
 response = call_claude_api(prompt)
@@ -184,8 +184,8 @@ except Exception as e:
 # ============================================================
 
 def generate_linkedin_posts(selected_articles):
-“”“Generate 3 different LinkedIn post alternatives based on selected articles.”””
-print(“✍️  Generating 3 LinkedIn post alternatives…”)
+#Generate 3 different LinkedIn post alternatives based on selected articles."""
+print("✍️  Generating 3 LinkedIn post alternatives…")
 
 ```
 articles_summary = "\n\n".join([
@@ -218,26 +218,26 @@ Make each post DISTINCTLY different in:
 
 Return ONLY a JSON object in this exact format:
 {{
-“posts”: [
+"posts": [
 {{
-“style”: “Data & Trends”,
-“text”: “<full post text with hashtags>”,
-“hook”: “<first sentence preview>”
+"style": "Data & Trends",
+"text": "<full post text with hashtags>",
+"hook": "<first sentence preview>"
 }},
 {{
-“style”: “Thought Leadership”,
-“text”: “<full post text with hashtags>”,
-“hook”: “<first sentence preview>”
+"style": “Thought Leadership",
+"text": “<full post text with hashtags>",
+"hook": “<first sentence preview>"
 }},
 {{
-“style”: “Practical & Actionable”,
-“text”: “<full post text with hashtags>”,
-“hook”: “<first sentence preview>”
+"style": “Practical & Actionable",
+"text": “<full post text with hashtags>",
+"hook": “<first sentence preview>"
 }}
 ],
-“source_articles”: [”{selected_articles[0][‘title’] if selected_articles else ‘’}”, “{selected_articles[1][‘title’] if len(selected_articles) > 1 else ‘’}”, “{selected_articles[2][‘title’] if len(selected_articles) > 2 else ‘’}”],
-“generated_date”: “{datetime.now().strftime(’%Y-%m-%d’)}”
-}}”””
+“source_articles": ["{selected_articles[0][‘title’] if selected_articles else ‘’}", “{selected_articles[1][‘title’] if len(selected_articles) > 1 else ‘’}", “{selected_articles[2][‘title’] if len(selected_articles) > 2 else ‘’}"],
+“generated_date": “{datetime.now().strftime(’%Y-%m-%d’)}"
+}}"""
 
 ```
 response = call_claude_api(prompt, max_tokens=2000)
@@ -264,8 +264,8 @@ except Exception as e:
 # ============================================================
 
 def save_to_google_sheets(posts_data, selected_articles):
-“”“Save the generated posts to Google Sheets.”””
-print(“📊 Saving posts to Google Sheets…”)
+“"“Save the generated posts to Google Sheets."""
+print(“📊 Saving posts to Google Sheets…")
 
 ```
 try:
@@ -350,8 +350,8 @@ except Exception as e:
 # ============================================================
 
 def send_email_notification(posts_data, sheet_url, selected_articles):
-“”“Send email notification that new posts are ready.”””
-print(“📧 Sending email notification…”)
+“"“Send email notification that new posts are ready."""
+print(“📧 Sending email notification…")
 
 ```
 posts = posts_data.get("posts", [])
@@ -429,32 +429,32 @@ except Exception as e:
 # ============================================================
 
 def call_claude_api(prompt, max_tokens=1500):
-“”“Call the Anthropic Claude API.”””
+“"“Call the Anthropic Claude API."""
 headers = {
-“x-api-key”: CONFIG[“anthropic_api_key”],
-“anthropic-version”: “2023-06-01”,
-“content-type”: “application/json”
+“x-api-key": CONFIG[“anthropic_api_key"],
+“anthropic-version": “2023-06-01",
+“content-type": “application/json"
 }
 payload = {
-“model”: “claude-sonnet-4-20250514”,
-“max_tokens”: max_tokens,
-“messages”: [{“role”: “user”, “content”: prompt}]
+“model": “claude-sonnet-4-20250514",
+“max_tokens": max_tokens,
+“messages": [{“role": “user", “content": prompt}]
 }
 try:
 response = requests.post(
-“https://api.anthropic.com/v1/messages”,
+“https://api.anthropic.com/v1/messages",
 headers=headers,
 json=payload,
 timeout=60
 )
 if response.status_code == 200:
-return response.json()[“content”][0][“text”]
+return response.json()[“content"][0][“text"]
 else:
-print(f”  Claude API error: {response.status_code} — {response.text[:200]}”)
-return “”
+print(f"  Claude API error: {response.status_code} — {response.text[:200]}")
+return “"
 except Exception as e:
-print(f”  Claude API exception: {e}”)
-return “”
+print(f"  Claude API exception: {e}")
+return “"
 
 # ============================================================
 
@@ -463,11 +463,11 @@ return “”
 # ============================================================
 
 def run_agent():
-“”“Run the full HR Tech content agent pipeline.”””
-print(”\n” + “=”*60)
-print(“🤖 HR TECH CONTENT AGENT — Starting Run”)
-print(f”   {datetime.now().strftime(’%Y-%m-%d %H:%M:%S’)}”)
-print(”=”*60 + “\n”)
+“"“Run the full HR Tech content agent pipeline."""
+print("\n" + “="*60)
+print(“🤖 HR TECH CONTENT AGENT — Starting Run")
+print(f"   {datetime.now().strftime(’%Y-%m-%d %H:%M:%S’)}")
+print("="*60 + “\n")
 
 ```
 # Step 1: Search
@@ -509,11 +509,11 @@ print("="*60 + "\n")
 # ============================================================
 
 def run_with_schedule():
-“”“Run the agent on a schedule.”””
+“"“Run the agent on a schedule."""
 try:
 import schedule
-print(f”⏰ Scheduler started — agent will run every {CONFIG[‘run_every_days’]} days”)
-print(”   Running first batch now…\n”)
+print(f"⏰ Scheduler started — agent will run every {CONFIG[‘run_every_days’]} days")
+print("   Running first batch now…\n")
 
 ```
     # Run immediately on start
@@ -532,9 +532,9 @@ except ImportError:
     run_agent()
 ```
 
-if **name** == “**main**”:
+if **name** == “**main**":
 import sys
-if “–once” in sys.argv:
+if “–once" in sys.argv:
 run_agent()
 else:
 run_with_schedule()
