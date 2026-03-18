@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-“””
-HR Tech Social Media AI Agent
-Searches trending HR tech articles, generates LinkedIn posts,
-stores them in Google Sheets, and sends email notifications.
-“””
+
+#“””
+#HR Tech Social Media AI Agent
+#Searches trending HR tech articles, generates LinkedIn posts,
+#stores them in Google Sheets, and sends email notifications.
+#“””
 
 import os
 import json
