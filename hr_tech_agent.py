@@ -23,7 +23,7 @@ from email.mime.multipart import MIMEMultipart
 
 CONFIG = {
 # Anthropic API
-"anthropic_api_key" : os.getenv(“ANTHROPIC_API_KEY”, “YOUR_ANTHROPIC_API_KEY”),
+"anthropic_api_key" : os.getenv("ANTHROPIC_API_KEY", "YOUR_ANTHROPIC_API_KEY"),
 
 ```
 # Google Sheets (via Google Sheets API)
@@ -54,7 +54,7 @@ CONFIG = {
 # ============================================================
 
 def search_hr_tech_articles():
-“”“Search for the most recent and trending HR tech articles.”””
+#Search for the most recent and trending HR tech articles.
 print(“🔍 Searching for trending HR tech articles…”)
 
 ```
