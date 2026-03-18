@@ -1,0 +1,34 @@
+name: HR Tech Content Agent
+
+on:
+  schedule:
+    # Runs every other Monday at 8:00 AM UTC (adjust timezone offset as needed)
+    # To change timing: https://crontab.guru
+    - cron: '0 8 1,15 * *'  # 1st and 15th of each month at 8am UTC
+
+  # Allows you to manually trigger a run from GitHub's website anytime
+  workflow_dispatch:
+
+jobs:
+  run-agent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run HR Tech Agent
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
+        run: python hr_tech_agent.py --once
