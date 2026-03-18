@@ -141,11 +141,11 @@ Please:
 
 Return your response as JSON in this exact format:
 {{
-“selected_articles": [
+"selected_articles": [
 {{
 "index": <original article number 1-{len(articles)}>,
-"title": “<article title>",
-"url": “<article url>",
+"title": "<article title>",
+"url": "<article url>",
 "why_trending": "<2-3 sentence explanation of why this is trending and relevant to HR professionals>"
 }}
 ]
@@ -225,18 +225,18 @@ Return ONLY a JSON object in this exact format:
 "hook": "<first sentence preview>"
 }},
 {{
-"style": “Thought Leadership",
-"text": “<full post text with hashtags>",
-"hook": “<first sentence preview>"
+"style": "Thought Leadership",
+"text": "<full post text with hashtags>",
+"hook": "<first sentence preview>"
 }},
 {{
-"style": “Practical & Actionable",
-"text": “<full post text with hashtags>",
-"hook": “<first sentence preview>"
+"style": "Practical & Actionable",
+"text": "<full post text with hashtags>",
+"hook": "<first sentence preview>"
 }}
 ],
-“source_articles": ["{selected_articles[0][‘title’] if selected_articles else ‘’}", “{selected_articles[1][‘title’] if len(selected_articles) > 1 else ‘’}", “{selected_articles[2][‘title’] if len(selected_articles) > 2 else ‘’}"],
-“generated_date": “{datetime.now().strftime(’%Y-%m-%d’)}"
+"source_articles": ["{selected_articles[0][‘title’] if selected_articles else ‘’}", "{selected_articles[1][‘title’] if len(selected_articles) > 1 else ‘’}", "{selected_articles[2][‘title’] if len(selected_articles) > 2 else ‘’}"],
+"generated_date": "{datetime.now().strftime(’%Y-%m-%d’)}"
 }}"""
 
 ```
@@ -265,7 +265,7 @@ except Exception as e:
 
 def save_to_google_sheets(posts_data, selected_articles):
 #Save the generated posts to Google Sheets.
-print(“📊 Saving posts to Google Sheets…")
+print("📊 Saving posts to Google Sheets…")
 
 ```
 try:
@@ -351,7 +351,7 @@ except Exception as e:
 
 def send_email_notification(posts_data, sheet_url, selected_articles):
 #Send email notification that new posts are ready.
-print(“📧 Sending email notification…")
+print("📧 Sending email notification…")
 
 ```
 posts = posts_data.get("posts", [])
@@ -432,11 +432,11 @@ def call_claude_api(prompt, max_tokens=1500):
 #Call the Anthropic Claude API.
 headers = {
 "x-api-key": CONFIG["anthropic_api_key"],
-"anthropic-version": “2023-06-01",
+"anthropic-version": "2023-06-01",
 "content-type": "application/json"
 }
 payload = {
-"model": “claude-sonnet-4-20250514",
+"model": "claude-sonnet-4-20250514",
 "max_tokens": max_tokens,
 "messages": [{"role": "user", "content": prompt}]
 }
@@ -463,8 +463,8 @@ return ""
 # ============================================================
 
 def run_agent():
-“"“Run the full HR Tech content agent pipeline."""
-print("\n" + “="*60)
+#Run the full HR Tech content agent pipeline.
+print("\n" + "="*60)
 print("🤖 HR TECH CONTENT AGENT — Starting Run")
 print(f"   {datetime.now().strftime(’%Y-%m-%d %H:%M:%S’)}")
 print("="*60 + "\n")
@@ -532,9 +532,9 @@ except ImportError:
     run_agent()
 ```
 
-if **name** == “**main**":
+if **name** == "**main**":
 import sys
-if “–once" in sys.argv:
+if "–once" in sys.argv:
 run_agent()
 else:
 run_with_schedule()
