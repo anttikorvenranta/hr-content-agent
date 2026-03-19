@@ -23,15 +23,15 @@ CONFIG = {
 
     # Google Sheets (via Google Sheets API)
     "google_sheets_credentials_file": "google_credentials.json",  # Service account JSON
-    "spreadsheet_id": "YOUR_GOOGLE_SHEET_ID",  # From the Sheet URL
+    "spreadsheet_id": "14QZxV8knM_g4AWEkcsXRewTIw42vr6ugdHOR8gXB0VE",  # From the Sheet URL
     "sheet_name": "HR Tech Posts",
 
     # Email (Gmail SMTP example)
     "smtp_host": "smtp.gmail.com",
     "smtp_port": 587,
-    "email_sender": "your_email@gmail.com",
+    "email_sender": "antti.korvenranta@gmail.com",
     "email_password": os.getenv("EMAIL_PASSWORD", "YOUR_APP_PASSWORD"),  # Gmail App Password
-    "email_recipient": "your_email@gmail.com",
+    "email_recipient": "antti.korvenranta@gmail.com",
 
     # Search (using Serper.dev or similar — free tier available)
     "serper_api_key": os.getenv("SERPER_API_KEY", "YOUR_SERPER_API_KEY"),
