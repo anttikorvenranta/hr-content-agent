@@ -24,15 +24,15 @@ CONFIG = {
 
     # Google Sheets
     "google_sheets_credentials_file": "google_credentials.json",
-    "spreadsheet_id": "YOUR_GOOGLE_SHEET_ID",  # ✏️ Change this
+    "spreadsheet_id": "14QZxV8knM_g4AWEkcsXRewTIw42vr6ugdHOR8gXB0VE",  # ✏️ Change this
     "sheet_name": "Workday Posts",              # Separate tab from HR Tech agent
 
     # Email
     "smtp_host": "smtp.gmail.com",
     "smtp_port": 587,
-    "email_sender": "your_email@gmail.com",     # ✏️ Change this
+    "email_sender": "antti.korvenranta@gmail.com",     # ✏️ Change this
     "email_password": os.getenv("EMAIL_PASSWORD", "YOUR_APP_PASSWORD"),
-    "email_recipient": "your_email@gmail.com",  # ✏️ Change this
+    "email_recipient": "antti.korvenranta@gmail.com",  # ✏️ Change this
 
     # Search
     "serper_api_key": os.getenv("SERPER_API_KEY", "YOUR_SERPER_API_KEY"),
