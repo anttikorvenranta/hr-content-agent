@@ -399,7 +399,8 @@ def call_claude_api(prompt, max_tokens=1500):
         "content-type": "application/json"
     }
     payload = {
-        "model": "claude-sonnet-4-20250514",
+        "model="claude-3-opus-20240229"
+#       "model": "claude-sonnet-4-20250514",
         "max_tokens": max_tokens,
         "messages": [{"role": "user", "content": prompt}]
     }
